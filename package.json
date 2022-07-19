@@ -7,7 +7,7 @@
     "dev": "nodemon server/index.js",
     "test": "test",
     "release": "release-please",
-    "make:migration": "knex migrate:make",
+    "migrate:make": "knex migrate:make",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "seed:make": "knex seed:make"
@@ -28,6 +28,7 @@
     "pg": "^8.7.3"
   },
   "devDependencies": {
+    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19",
     "release-please": "^13.19.3"
   }
