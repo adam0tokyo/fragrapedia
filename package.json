@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server/index.js",
+    "test": "test",
+    "release": "release-please",
+    "make:migration": "knex migrate:make",
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "seed:make": "knex seed:make"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,14 @@
   "bugs": {
     "url": "https://github.com/adam0tokyo/fragrapedia/issues"
   },
-  "homepage": "https://github.com/adam0tokyo/fragrapedia#readme"
+  "homepage": "https://github.com/adam0tokyo/fragrapedia#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "knex": "^2.2.0",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "release-please": "^13.19.3"
+  }
 }
