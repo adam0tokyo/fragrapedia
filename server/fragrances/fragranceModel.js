@@ -10,7 +10,7 @@ class Items {
                 .select("*")
                 .timeout(1500);
         } catch(err) {
-            return err;
+            console.error(err);
         }
     };
 
@@ -21,7 +21,7 @@ class Items {
                 .where("name", name)
                 .timeout(1500);
         } catch (err) {
-           return err;
+            console.error(err);
         }
     };
 
@@ -34,7 +34,7 @@ class Items {
             .timeout(1500);
             return "successfully created!"
         } catch (err) {
-            return err;
+            console.error(err);
         }
     }
 
@@ -46,7 +46,7 @@ class Items {
             .timeout(1500);
             return "successfully updated!"
         } catch (err) {
-            return err;
+            console.error(err);
         }
     }
 
@@ -58,7 +58,7 @@ class Items {
             .timeout(1500);
             return "successfully delted!"
         } catch (err) {
-            return err;
+            console.error(err);
         }
     }
 };

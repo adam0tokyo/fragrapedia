@@ -16,6 +16,7 @@ router.get('/', async (req,res) => {
 
 // QUESTION: if the Model level try/catch thows an error when 
 // saving the variable to "name", does it feed into the Controllwer level try/catch
+// it's two promises!
 router.get('/:name', async (req,res) => {
     const { name } = req.params;
     try {
@@ -37,6 +38,8 @@ router.post('/', async (req,res) => {
 });
 
 router.patch('/:name', async (req,res) => {
+    //shallow merge
+    //knex transaction
     const { name } = req.params;
     const edits = req.body;
     try {
