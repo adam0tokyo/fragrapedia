@@ -4,23 +4,20 @@ const db = require('../../db/knex');
 const Fragrances = require("./fragranceModel");
 
 
-
+// how to pass limit while also using my getnameOrId route?
 router.get('/', async (req,res) => {
     try {
-        const fragrances = await Fragrances.findMany();
+        const fragrances = await Fragrances.findAll();
         res.send(fragrances).status(200);
     } catch(err) {
         res.send(err).status(404);
     }
 });
 
-// QUESTION: if the Model level try/catch thows an error when 
-// saving the variable to "name", does it feed into the Controllwer level try/catch
-// it's two promises!
-router.get('/:name', async (req,res) => {
-    const { name } = req.params;
+router.get('/:nameOrId', async (req,res) => {
+    const { nameOrId } = req.params;
     try {
-        const fragrance = await Fragrances.findOne(name);
+        const fragrance = await Fragrances.findOne(nameOrId);
         res.send(fragrance).status(200);
     } catch (err) {
         res.send(err).status(404);
@@ -28,32 +25,31 @@ router.get('/:name', async (req,res) => {
 });
 
 router.post('/', async (req,res) => {
-    const { name } = req.body;
     try {
-        await Fragrances.create(name);
+        await Fragrances.create(req.body);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);
     }
 });
 
-router.patch('/:name', async (req,res) => {
+router.patch('/:nameOrId', async (req,res) => {
     //shallow merge
     //knex transaction
-    const { name } = req.params;
+    const { nameOrId } = req.params;
     const edits = req.body;
     try {
-        await Fragrances.update(name, edits);
+        await Fragrances.update(nameOrId, edits);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);
     }
 });
 
-router.delete('/:name', async (req,res) => {
-    const { name } = req.params;
+router.delete('/:nameOrId', async (req,res) => {
+    const { nameOrId } = req.params;
     try {
-        await Fragrances.delete(name);
+        await Fragrances.delete(nameOrId);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);
