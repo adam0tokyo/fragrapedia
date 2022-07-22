@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../db/knex');
+// const db = require('../../db/knex');
 const Fragrances = require("./fragranceModel");
 
+// parse int???
 
 // how to pass limit while also using my getnameOrId route?
 router.get('/', async (req,res) => {
@@ -35,7 +36,7 @@ router.post('/', async (req,res) => {
 
 router.patch('/:nameOrId', async (req,res) => {
     //shallow merge
-    //knex transaction
+    //knex transaction ?
     const { nameOrId } = req.params;
     const edits = req.body;
     try {

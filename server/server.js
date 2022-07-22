@@ -4,6 +4,7 @@ const fragranceController = require("../server/fragrances/fragranceController");
 
 const setupServer = () => {
     const app = express();
+    app.use('/', express.static('public'));
     app.use(express.json());
     app.use("/api/fragrances", fragranceController);
 
