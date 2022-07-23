@@ -15,12 +15,12 @@ class Items {
         }
     };
 
-    async findOne (nameOrId) {
+    async findOne (listName) {
         try {
             return await this.db('fragrances')
                 .select("*")
-                .where("list_name" || "id", nameOrId)
-                // .orWhere("id", nameOrId ) //why do they fight?
+                .where("list_name" || "id", listName)
+                // .orWhere("id", listName ) //why do they fight?
                 .timeout(1500);
         } catch (err) {
             console.error(err);
@@ -38,10 +38,10 @@ class Items {
         }
     }
 
-    async update(nameOrId, edits) {
+    async update(listName, edits) {
         try {
             await this.db("fragrances")
-            .where("list_name", nameOrId)
+            .where("list_name", listName)
             .update(edits)
             .timeout(1500);
             return "successfully updated!"
@@ -50,11 +50,11 @@ class Items {
         }
     }
 
-    async delete(nameOrId) {
+    async delete(listName) {
         try {
             await this.db("fragrances")
-            .where("list_name", nameOrId)
-            // .orWhere("id", nameOrId)
+            .where("list_name", listName)
+            // .orWhere("id", listName)
             .timeout(1500);
             return "successfully delted!"
         } catch (err) {

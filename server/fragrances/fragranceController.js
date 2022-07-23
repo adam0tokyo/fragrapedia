@@ -3,9 +3,9 @@ const router = express.Router();
 // const db = require('../../db/knex');
 const Fragrances = require("./fragranceModel");
 
-// parse int???
+// parse int on id?
 
-// how to pass limit while also using my getnameOrId route?
+
 router.get('/', async (req,res) => {
     try {
         const fragrances = await Fragrances.findAll();
@@ -15,10 +15,10 @@ router.get('/', async (req,res) => {
     }
 });
 
-router.get('/:nameOrId', async (req,res) => {
-    const { nameOrId } = req.params;
+router.get('/:listName', async (req,res) => {
+    const { listName } = req.params;
     try {
-        const fragrance = await Fragrances.findOne(nameOrId);
+        const fragrance = await Fragrances.findOne(listName);
         res.send(fragrance).status(200);
     } catch (err) {
         res.send(err).status(404);
@@ -34,23 +34,23 @@ router.post('/', async (req,res) => {
     }
 });
 
-router.patch('/:nameOrId', async (req,res) => {
+router.patch('/:listName', async (req,res) => {
     //shallow merge
     //knex transaction ?
-    const { nameOrId } = req.params;
+    const { listName } = req.params;
     const edits = req.body;
     try {
-        await Fragrances.update(nameOrId, edits);
+        await Fragrances.update(listName, edits);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);
     }
 });
 
-router.delete('/:nameOrId', async (req,res) => {
-    const { nameOrId } = req.params;
+router.delete('/:listName', async (req,res) => {
+    const { listName } = req.params;
     try {
-        await Fragrances.delete(nameOrId);
+        await Fragrances.delete(listName);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);

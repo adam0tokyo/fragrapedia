@@ -4,8 +4,8 @@
  */
  exports.up = async function(knex) {
   return await knex.schema.createTable("fragrances", (table) => {
-      table.increments('id').unique().notNullable();
-      table.string('list_name', 255).unique().notNullable();
+      table.increments('id').unique().notNullable().onDelete('CASCADE');
+      table.string('list_name', 255).unique().notNullable().onDelete('CASCADE');
       table.string('name', 150).notNullable();
       table.string('house', 150).notNullable();
       table.string('perfumer', 150);
