@@ -1,25 +1,23 @@
 const express = require('express');
 const router = express.Router();
-// const db = require('../../db/knex');
-const Fragrances = require("./fragranceModel");
+const Users = require("./userModel");
 
 // parse int on id?
 
-
 router.get('/', async (req,res) => {
     try {
-        const fragrances = await Fragrances.findAll();
-        res.send(fragrances).status(200);
+        const users = await Users.findAll();
+        res.send(users).status(200);
     } catch(err) {
         res.send(err).status(404);
     }
 });
 
-router.get('/:listName', async (req,res) => {
-    const { listName } = req.params;
+router.get('/:username', async (req,res) => {
+    const { username } = req.params;
     try {
-        const fragrance = await Fragrances.findOne(listName);
-        res.send(fragrance).status(200);
+        const user = await Users.findOne(username);
+        res.send(user).status(200);
     } catch (err) {
         res.send(err).status(404);
     }
@@ -27,30 +25,30 @@ router.get('/:listName', async (req,res) => {
 
 router.post('/', async (req,res) => {
     try {
-        await Fragrances.create(req.body);
+        await Users.create(req.body);
         res.status(201).end();
     } catch (err) {
         res.send(err).status(404);
     }
 });
 
-router.patch('/:listName', async (req,res) => {
+router.patch('/:username', async (req,res) => {
     //shallow merge
     //knex transaction ?
-    const { listName } = req.params;
+    const { username } = req.params;
     const edits = req.body;
     try {
-        await Fragrances.update(listName, edits);
+        await Users.update(username, edits);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);
     }
 });
 
-router.delete('/:listName', async (req,res) => {
-    const { listName } = req.params;
+router.delete('/:username', async (req,res) => {
+    const { username } = req.params;
     try {
-        await Fragrances.delete(listName);
+        await Users.delete(username);
         res.status(204).end();
     } catch (err) {
         res.send(err).status(404);

@@ -1,4 +1,4 @@
-class Items {
+class Fragrances {
     constructor() {
         this.db = require("../../db/knex");
     };
@@ -19,7 +19,7 @@ class Items {
         try {
             return await this.db('fragrances')
                 .select("*")
-                .where("list_name" || "id", listName)
+                .where("list_name", listName)
                 // .orWhere("id", listName ) //why do they fight?
                 .timeout(1500);
         } catch (err) {
@@ -54,13 +54,13 @@ class Items {
         try {
             await this.db("fragrances")
             .where("list_name", listName)
-            // .orWhere("id", listName)
+            .del()
             .timeout(1500);
-            return "successfully delted!"
+            return "successfully deleted!";
         } catch (err) {
             console.error(err);
         }
     }
 };
 
-module.exports = new Items();
+module.exports = new Fragrances();

@@ -12,3 +12,9 @@ Fragrapedia was built uisng PostgreSQL, Express.js, and Knex.js.
 - `POST` /fragrances : Create a new fragrance passed as an object.
 - `PATCH` /fragrances/{name} : Modifies a target fragrance.
 - `DELETE` /fragrances/{name} : Removes a target fragrance.
+
+- `GET` /users : Returns a list of all users.
+- `GET` /users/{name} : Returns a single user object.
+- `POST` /users : Create a new user passed as an object with UUID & hashed password.
+- `PATCH` /users/{name} : Modifies a target user (username & email only).
+- `DELETE` /users/{name} : Removes a target user.
