@@ -4,7 +4,7 @@
 Fragrapedia is an app built for users to create, update, and collectively maintain a database of perfumes and fragrances. Users can also review and vote on various aspectects of these frargances, as well as keep track of thier own collection.
 
 ## Technologies
-Fragrapedia was built uisng PostgreSQL, Express.js, and Knex.js.
+Fragrapedia was built uisng PostgreSQL, Express.js, Knex.js, UUID, bcrypt.
 
 ### Endpoints
 - `GET` /fragrances : Returns a list of all fragrances.
