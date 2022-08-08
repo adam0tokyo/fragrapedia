@@ -35,6 +35,7 @@ router.post('/', async (req,res) => {
 router.patch('/:username', async (req,res) => {
     //shallow merge
     //knex transaction ?
+    // UPDATE DATE
     const { username } = req.params;
     const edits = req.body;
     try {
