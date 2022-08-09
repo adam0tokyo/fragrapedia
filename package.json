@@ -29,10 +29,10 @@
     "express-validator": "^6.14.2",
     "heroku": "^7.62.0",
     "knex": "^2.2.0",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "dotenv": "^16.0.1"
   },
   "devDependencies": {
-    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19",
     "release-please": "^13.19.3"
   }
