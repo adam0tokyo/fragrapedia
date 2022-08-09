@@ -1,14 +1,22 @@
-const express = require("express");
+const express = require('express');
 // const db = require('../db/knex');
-const fragranceController = require("../server/fragrances/fragranceController");
-const userController = require("../server/users/userController");
+const fragranceController = require('../server/fragrances/fragranceController');
+const userController = require('../server/users/userController');
+const cors = require('cors');
 
 const setupServer = () => {
-    const app = express();
     app.use('/', express.static('public'));
     app.use(express.json());
-    app.use("/api/fragrances", fragranceController);
-    app.use("/api/users", userController);
+    const app = express();
+    app.use(
+        cors()
+        // {
+        // origin: 'https://fragrapedia-dev.herokuapp.com/',
+        // methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+        // }
+    );
+    app.use('/api/fragrances', fragranceController);
+    app.use('/api/users', userController);
 
     // app.get('/test', (req,res) => {
     //     res.send("'ello sekai");
@@ -24,7 +32,6 @@ const setupServer = () => {
     //         res.send(err).status(404);
     //     }
     // });
-
 
     return app;
 };
