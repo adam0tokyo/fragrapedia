@@ -3,16 +3,16 @@ require('dotenv').config({
 });
 
 module.exports = {
-    client: 'postgresql',
+    client: 'pg',
     connection:
         process.env.DATABASE_URL ||
         `postgres://${process.env.DB_USER}:${process.env.DB_PASSWORD}@127.0.0.1:5432/fragrapedia`,
     searchPath: 'public',
     migrations: {
-        directory: '/db/migrations',
+        directory: './db/migrations',
     },
     seeds: {
-        directory: '/db/seeds',
+        directory: './db/seeds',
     },
 };
 
